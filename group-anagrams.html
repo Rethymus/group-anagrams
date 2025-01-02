@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字母异位词分组</title>
+    <style>
+        /* 样式可以根据需求进行调整 */
+	html {
+            background-color: #00539f;//蓝色
+	}
+	h1 {
+            margin: 0;
+            padding: 20px 0;
+            color: #00539f;
+            text-shadow: 3px 3px 1px black;
+	}
+	img {
+            display: block;
+            margin: 0 auto;
+	}
+	blockquote{
+            color:black;
+	}
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            width: 600px;
+            margin: 0 auto;
+            background-color: #ff9500;//橙色
+            padding: 0 20px 20px 20px;
+            border: 5px solid black;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0074D9;
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>字母异位词分组</h1>
+    <br>
+    <img style="width:15vw"  src="0.jpg" alt="This is a img">
+    <br>
+    <br>
+    <input type="text" id="inputArray" placeholder="请输入单词，以逗号分隔">
+    <button onclick="groupAnagrams()"><abbr title="别戳我，我怕疼。">分组</abbr></button>
+    <ul id="resultList"></ul>
+
+    <script>
+        function groupAnagrams() {
+            // 获取用户输入的字符串数组并去除首尾空格
+            const inputArray = document.getElementById('inputArray').value;
+            const strings = inputArray.split(',').map(s => s.trim());
+
+            // 创建一个 Map 来存储字母异位词分组
+            const anagramMap = new Map();
+            strings.forEach(word => {
+                // 将单词按字母顺序排序，作为键
+                const sortedWord = word.split('').sort().join('');
+                if (anagramMap.has(sortedWord)) {
+                    // 如果已存在该键，将单词添加到对应的分组中
+                    anagramMap.get(sortedWord).push(word);
+                } else {
+                    // 否则，创建新的分组
+                    anagramMap.set(sortedWord, [word]);
+                }
+            });
+
+            // 将分组后的结果显示在页面上
+            const resultList = document.getElementById('resultList');
+            resultList.innerHTML = '';
+            anagramMap.forEach(group => {
+                const li = document.createElement('li');
+                li.textContent = group.join(', ');
+                resultList.appendChild(li);
+            });
+        }
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <img style="width:20vw" src="1.jpg" alt="This is a img">
+    <blockquote><cite>将  <abbr title="由重新排列源单词的所有字母得到的一个新单词"><a href="https://leetcode.cn/problems/group-anagrams/description/"target="blank">字母异位词</a></abbr> 组合在一起。可以按任意顺序返回结果列表。<cite></blockquote>
+    <br>
+    <p>Working together to keep the Internet alive aand accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across open platforms like Github is essential to individual growth and our collective future.</p>
+    <p>Read <a href="https://github.com/Rethymus/Rethymus.github.io/releases"target="_blank">My Github</a> to learn even more about the values and principles that guide the pursuit of our mission. </p>
+</body>
+</html>

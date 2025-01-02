@@ -1,4 +1,4 @@
-# 程序介绍
-这是2024年春季珠科数据结构与算法课程设计大作业
+# Program introduction
+This is a Data structure and Algorithm course design assignment of zcst for 2024.
 
-实现字母异位词分组
+To realize the grouping of letter heterotopic words.
